@@ -74,7 +74,7 @@ const PLACES = [
   ['Al Karama', 25.2450, 55.3040], ['Oud Metha', 25.2340, 55.3150], ['Discovery Gardens', 25.0400, 55.1450],
   ['Jumeirah Golf Estates', 25.0220, 55.2000],
 ].map(([name, lat, lng]) => ({ name, lat, lng }));
-const CATS = { Pharmacy: [0.2, 1.2, 15], Food: [0.8, 2.6, 18], Grocery: [1.4, 3.0, 20], Documents: [0.1, 0.5, 25], Parcel: [0.4, 2.8, 22], Medical: [0.2, 0.9, 35] };
+const CATS = { Pharmacy: [0.2, 1.2, 15], Food: [0.8, 3.5, 18], Grocery: [1.5, 5.0, 22], Documents: [0.1, 0.5, 25], Parcel: [0.4, 4.5, 24], Medical: [0.2, 0.9, 35] };
 const NAMES = ['Aisha K.', 'Omar S.', 'Rahul M.', 'Fatima A.', 'James W.', 'Priya N.', 'Khalid R.', 'Maria L.', 'Hassan T.', 'Sara B.', 'Arjun P.', 'Layla H.', 'Yousef D.', 'Chen W.', 'Noura F.', 'Daniel O.', 'Meera J.', 'Ahmed Z.', 'Elena V.', 'Faisal Q.', 'Hana M.', 'Rohan G.', 'Mariam E.', 'Lucas R.', 'Zainab I.'];
 
 // DXB runway 12 threshold + approach geometry, and a coastal helicopter tour
@@ -135,7 +135,7 @@ function create({ seed = 7, clock0 = Date.now() } = {}) {
   for (let i = 0; i < CFG.fleet; i++) {
     const pod = S.pods[i % S.pods.length], exp = i % 4 === 3;
     S.drones.push({
-      id: `DRN-${101 + i}`, model: exp ? 'Q4 Express' : 'H6 Cargo', maxKg: exp ? 1.5 : 3, speed: exp ? 24 : 20,
+      id: `DRN-${101 + i}`, model: exp ? 'Q4 Express' : 'H6 Cargo', maxKg: 5, speed: exp ? 24 : 20,
       lat: pod.lat, lng: pod.lng, alt: 0, heading: Math.round(R() * 360), battery: 60 + Math.round(R() * 40),
       status: 'idle', podId: pod.id, home: pod.id, legs: [], path: [], order: null, trail: [], lastTrail: -99,
       boost: 0, boostUntil: 0, cap: 0, capUntil: 0, lowHandled: false,
@@ -199,7 +199,7 @@ function tryAssign(S, o) {
     const ready = S.drones.filter(x => x.status === 'idle' && x.podId === p.id);
     if (!ready.length) { trace.push([false, tag, 'no drone on pad']); continue; }
     const fit = ready.filter(x => x.maxKg >= o.kg).sort((a, b) => b.battery - a.battery);
-    if (!fit.length) { trace.push([false, tag, `${o.kg} kg exceeds Q4 payload`]); continue; }
+    if (!fit.length) { trace.push([false, tag, `${o.kg} kg exceeds 5 kg payload`]); continue; }
     const r1 = planRoute(S, p, o.pickup), r2 = planRoute(S, o.pickup, o.drop);
     const m1 = pathLen(p, r1), m2 = pathLen(o.pickup, r2);
     const need = Math.ceil(energyFor(S, m1) + energyFor(S, m2, o.kg) + hubCost(S, o.drop) + 2 * CFG.winchTime * CFG.hoverDrain + CFG.reserve);

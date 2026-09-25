@@ -354,7 +354,7 @@ function phoneQuote() {
   const P = ui.phone, m = Sim.MERCHANTS[P.merchant], drop = P.pin || Sim.PLACES[P.drop];
   const p = Sim.nearestPod(S, m), km = (Sim.dist(p, m) + Sim.dist(m, drop)) / 1000;
   const nfz = S.zones.find(z => z.active && Sim.inside(drop, z));
-  return { km, min: Math.round(km * 1000 / 20 / 60 + 2.5), fee: Math.round(10 + 2.2 * Sim.dist(m, drop) / 1000 + (P.kg > 1.5 ? 5 : 0)), nfz };
+  return { km, min: Math.round(km * 1000 / 20 / 60 + 2.5), fee: Math.round(10 + 2.2 * Sim.dist(m, drop) / 1000 + (P.kg > 3 ? 6 : P.kg > 1.5 ? 3 : 0)), nfz };
 }
 function buildForm() {
   const P = ui.phone, ms = Sim.MERCHANTS.map((m, i) => [m, i]).filter(([m]) => m.cat === P.cat);
@@ -364,7 +364,7 @@ function buildForm() {
     <label>Pickup from</label><select id="ph-m">${ms.map(([m, i]) => `<option value="${i}" ${i === P.merchant ? 'selected' : ''}>${esc(m.name)}</option>`).join('')}</select>
     <label>Deliver to</label><select id="ph-d">${P.pin ? '<option value="-1" selected>📍 Pinned location</option>' : ''}${Sim.PLACES.map((p, i) => `<option value="${i}" ${!P.pin && i === P.drop ? 'selected' : ''}>${esc(p.name)}</option>`).join('')}</select>
     <button class="pinbtn" data-act="pin">📍 Drop a pin on the map instead</button>
-    <label>Parcel weight · <span id="ph-kgv">${P.kg.toFixed(1)} kg</span></label><input id="ph-kg" type="range" min="0.1" max="3" step="0.1" value="${P.kg}" style="width:100%;accent-color:#c9a35a">
+    <label>Parcel weight · <span id="ph-kgv">${P.kg.toFixed(1)} kg</span></label><input id="ph-kg" type="range" min="0.1" max="5" step="0.1" value="${P.kg}" style="width:100%;accent-color:#c9a35a">
     <div id="ph-q"></div><button class="cta" data-act="send">Request drone</button>`;
   P.built = true;
 }
@@ -423,9 +423,9 @@ function pageOrders() {
 function pageFleet() {
   const st = S.drones, avail = st.filter(d => !['fault', 'grounded', 'maintenance'].includes(d.status)).length;
   const flights = st.reduce((a, d) => a + d.flights, 0), km = st.reduce((a, d) => a + d.km, 0);
-  return `<div class="phd"><div><h2>Fleet</h2><p class="lead" style="margin:0">${st.length} autonomous drones — ${st.filter(d => d.model === 'H6 Cargo').length} × H6 Cargo (3 kg) and ${st.filter(d => d.model !== 'H6 Cargo').length} × Q4 Express (1.5 kg, 86 km/h).</p></div></div>
+  return `<div class="phd"><div><h2>Fleet</h2><p class="lead" style="margin:0">${st.length} autonomous drones — ${st.filter(d => d.model === 'H6 Cargo').length} × H6 Cargo and ${st.filter(d => d.model !== 'H6 Cargo').length} × Q4 Express (86 km/h). Every drone carries up to 5 kg.</p></div></div>
     <div class="hero" style="margin-bottom:14px;min-height:230px;background:#181c22"><img src="assets/drone.jpg" alt="" style="object-fit:contain;object-position:right center"><div class="ov"><h3>H6 Cargo drone</h3><p>Hexacopter with winch-lowered cargo pod, swappable 1.9 kWh battery, ADS-B receiver and dual-redundant GNSS.</p>
-      <div class="nums"><div><div class="v">3 kg</div><div class="l">Payload</div></div><div><div class="v">~50 km</div><div class="l">Range / pack</div></div><div><div class="v">72 km/h</div><div class="l">Cruise</div></div><div><div class="v">60 s</div><div class="l">Battery swap</div></div></div></div></div>
+      <div class="nums"><div><div class="v">5 kg</div><div class="l">Payload</div></div><div><div class="v">~50 km</div><div class="l">Range / pack</div></div><div><div class="v">72 km/h</div><div class="l">Cruise</div></div><div><div class="v">60 s</div><div class="l">Battery swap</div></div></div></div></div>
     <div class="grid g4" style="margin-bottom:14px">
       <div class="card stat"><h4>Availability</h4><div class="v">${Math.round(100 * avail / st.length)}%</div><div class="s">${avail} of ${st.length} mission-ready</div></div>
       <div class="card stat"><h4>Avg battery</h4><div class="v">${Math.round(st.reduce((a, d) => a + d.battery, 0) / st.length)}%</div><div class="s">swaps only at Energy Hub</div></div>
