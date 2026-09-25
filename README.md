@@ -1,5 +1,8 @@
 # Drone Logistics OS (client demo)
 
+**Live demo:** https://gjagadish123.github.io/DroneLogisticsOS/  
+**One-pager:** [proposal/Drone-Logistics-Architecture-and-Phases.pdf](proposal/Drone-Logistics-Architecture-and-Phases.pdf)
+
 A live Super Admin command center for autonomous drone delivery in Dubai. It runs a real simulation:
 9 drone pods, 1 battery-swap Energy Hub, 36 drones, live orders, no-fly zones and manned air traffic.
 
