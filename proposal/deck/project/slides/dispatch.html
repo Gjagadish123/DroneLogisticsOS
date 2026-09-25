@@ -1,0 +1,33 @@
+<section id="dispatch" data-transition="fade" style="background:#F3F5F8; color:#121C2B; font-family:'Manrope', Arial, sans-serif; padding:128px 128px 160px; display:flex; flex-direction:column; gap:48px">
+  <div style="display:flex; flex-direction:column; gap:12px">
+    <p style="font-size:24px; font-weight:700; letter-spacing:4px; text-transform:uppercase; color:#7E5C1A">Dispatch engine</p>
+    <h2 style="font-size:72px; font-weight:700; line-height:1.1; width:1500px">The nearest pod that can actually do the job</h2>
+  </div>
+  <div style="display:flex; gap:64px; align-items:start">
+    <div style="flex:1; display:flex; flex-direction:column; gap:32px">
+      <div style="display:flex; flex-direction:column; gap:8px">
+        <h3 style="font-size:32px; font-weight:700">1 · Distance</h3>
+        <p style="font-size:24px; line-height:1.4; color:#4A5568">The four closest pods to the pickup are checked, nearest first.</p>
+      </div>
+      <div style="display:flex; flex-direction:column; gap:8px">
+        <h3 style="font-size:32px; font-weight:700">2 · Payload</h3>
+        <p style="font-size:24px; line-height:1.4; color:#4A5568">Every drone carries up to 5 kg, so groceries and parcels fit.</p>
+      </div>
+      <div style="display:flex; flex-direction:column; gap:8px">
+        <h3 style="font-size:32px; font-weight:700">3 · Energy</h3>
+        <p style="font-size:24px; line-height:1.4; color:#4A5568">Enough battery for pickup, delivery and the flight to the Energy Hub, plus a 10% reserve.</p>
+      </div>
+    </div>
+    <div style="width:800px; display:flex; flex-direction:column; gap:16px; background:#0B1422; border-radius:20px; padding:40px; font-family:'JetBrains Mono', 'Courier New', monospace; color:#E3EBF5">
+      <p style="font-size:24px; font-weight:700; letter-spacing:2px; color:#D4AA5E">DECISION TRACE · FROM THE DEMO</p>
+      <p style="font-size:28px; font-weight:700">ORD-10281 · Pharmacy · 0.6 kg</p>
+      <p style="font-size:24px; line-height:1.45; color:#9AA8B8"><span style="color:#FF7A7E">SKIP</span> P-01 Dubai Marina 0.3 km, no drone on pad</p>
+      <p style="font-size:24px; line-height:1.45; color:#9AA8B8"><span style="color:#FF7A7E">SKIP</span> P-02 Palm Jumeirah 3.4 km, no drone on pad</p>
+      <p style="font-size:24px; line-height:1.45; color:#E3EBF5"><span style="color:#4FE0A0">PICK</span> P-03 Al Barsha 6.8 km, DRN-128 at 76%, needs 73%</p>
+      <p style="font-size:24px; line-height:1.45; color:#F0CF8F">DRN-128 dispatched, ETA 19 min</p>
+    </div>
+  </div>
+  <p style="position:absolute; left:128px; bottom:64px; width:1200px; font-size:24px; color:#6B7686">Intagrit · intagrit.com</p>
+  <p style="position:absolute; right:128px; bottom:64px; width:120px; text-align:right; font-size:24px; color:#6B7686">05</p>
+  <aside>The trace on the right is real output from the demo. It shows the system skipping the two nearest pods because they had no drone free, then picking Al Barsha because DRN-128 had enough battery. The client can see this reasoning for every order.</aside>
+</section>
