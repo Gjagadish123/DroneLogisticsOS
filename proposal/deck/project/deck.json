@@ -1,17 +1,71 @@
 {
   "v": 4,
-  "createdOnFiles": { "v": 1, "at": "2026-09-25T17:05:00Z" },
-  "title": "Drone Logistics OS Pitch",
-  "order": ["cover", "brief", "flow", "command", "dispatch", "city", "energy", "airspace", "customer", "fleet", "architecture", "plan", "demo", "next"],
+  "createdOnFiles": {
+    "v": 1,
+    "at": "2026-09-25T17:05:00Z"
+  },
+  "title": "Drone Delivery Platform · Proposal",
+  "order": [
+    "cover",
+    "exec",
+    "opportunity",
+    "brief",
+    "flow",
+    "modes",
+    "command",
+    "dispatch",
+    "city",
+    "energy",
+    "preflight",
+    "handover",
+    "exceptions",
+    "airspace",
+    "radar",
+    "corridor",
+    "customer",
+    "fleet",
+    "architecture",
+    "trust",
+    "evidence",
+    "costs",
+    "pilot",
+    "risks",
+    "plan",
+    "demo",
+    "decisions",
+    "next"
+  ],
   "sections": {
-    "intro": { "description": "The proposal and the client's four requirements", "start": "cover" },
-    "solution": { "description": "How the platform meets each requirement, shown from the live demo", "start": "flow" },
-    "platform": { "description": "The network, fleet and architecture behind it", "start": "fleet" },
-    "delivery": { "description": "The delivery plan, the working demo and next steps", "start": "plan" }
+    "intro": {
+      "description": "The proposal, the opportunity and the client's requirements",
+      "start": "cover"
+    },
+    "solution": {
+      "description": "How the platform works, shown from the live portal",
+      "start": "flow"
+    },
+    "safety": {
+      "description": "Safety gates, handover, exceptions and airspace control",
+      "start": "preflight"
+    },
+    "platform": {
+      "description": "Network, architecture, security, evidence and cost model",
+      "start": "fleet"
+    },
+    "plan": {
+      "description": "Pilot stages, risks and the decisions needed",
+      "start": "pilot"
+    }
   },
   "faces": {
-    "manrope": { "family": "Manrope", "href": "https://fonts.googleapis.com/css2?family=Manrope:wght@400..800&display=swap" },
-    "jetbrains-mono": { "family": "JetBrains Mono", "href": "https://fonts.googleapis.com/css2?family=JetBrains+Mono:wght@500;700&display=swap" }
+    "manrope": {
+      "family": "Manrope",
+      "href": "https://fonts.googleapis.com/css2?family=Manrope:wght@400..800&display=swap"
+    },
+    "jetbrains-mono": {
+      "family": "JetBrains Mono",
+      "href": "https://fonts.googleapis.com/css2?family=JetBrains+Mono:wght@500;700&display=swap"
+    }
   },
   "designSystems": []
 }
