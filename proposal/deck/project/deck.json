@@ -26,8 +26,9 @@
     "fleet",
     "architecture",
     "trust",
-    "evidence",
-    "costs",
+    "techflow",
+    "hosting",
+    "roadmap",
     "pilot",
     "risks",
     "plan",
@@ -49,7 +50,7 @@
       "start": "preflight"
     },
     "platform": {
-      "description": "Network, architecture, security, evidence and cost model",
+      "description": "Network, architecture, security, technology stack and hosting",
       "start": "fleet"
     },
     "plan": {
