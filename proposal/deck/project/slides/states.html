@@ -1,0 +1,19 @@
+<section id="states" data-transition="fade" style="background:#F3F5F8; color:#121C2B; font-family:'Manrope', Arial, sans-serif; padding:128px 128px 160px; display:flex; flex-direction:column; gap:40px">
+  <div style="display:flex; flex-direction:column; gap:12px">
+    <p style="font-size:24px; font-weight:700; letter-spacing:4px; text-transform:uppercase; color:#7E5C1A">Build design · LLD</p>
+    <h2 style="font-size:72px; font-weight:700; line-height:1.1; color:#121C2B">Every state change has a guard</h2>
+  </div>
+  <table style="font-size:24px; color:#121C2B; border:1px solid #DDE3EA">
+    <tr style="background:#0B1422"><th style="width:18%; color:#F1F4F8">From</th><th style="width:34%; color:#F1F4F8">Only when</th><th style="width:18%; color:#F1F4F8">To</th><th style="width:30%; color:#F1F4F8">Otherwise</th></tr>
+    <tr><td style="width:18%"><b>Requested</b></td><td style="width:34%">Site, cargo, route and conditions pass</td><td style="width:18%; color:#0E7C70"><b>Eligible</b></td><td style="width:30%; color:#4A5568">Refuse with a useful reason</td></tr>
+    <tr style="background:#EEF1F5"><td style="width:18%"><b>Confirmed</b></td><td style="width:34%">Offer valid; resources reserved</td><td style="width:18%; color:#0E7C70"><b>Assigned</b></td><td style="width:30%; color:#4A5568">Reoffer, queue or ground delivery</td></tr>
+    <tr><td style="width:18%"><b>Assigned</b></td><td style="width:34%">Measured cargo and fresh safety checks</td><td style="width:18%; color:#0E7C70"><b>Released</b></td><td style="width:30%; color:#4A5568">Stay grounded and record why</td></tr>
+    <tr style="background:#EEF1F5"><td style="width:18%"><b>Released</b></td><td style="width:34%">Matching drone acknowledgement</td><td style="width:18%; color:#0E7C70"><b>Active</b></td><td style="width:30%; color:#4A5568">Investigate; no blind relaunch</td></tr>
+    <tr><td style="width:18%"><b>Arriving</b></td><td style="width:34%">Receiver, clear zone and energy valid</td><td style="width:18%; color:#0E7C70"><b>Placement requested</b></td><td style="width:30%; color:#4A5568">Bounded hold, alternate or return</td></tr>
+    <tr style="background:#EEF1F5"><td style="width:18%"><b>Placement requested</b></td><td style="width:34%">Positive physical feedback</td><td style="width:18%; color:#0E7C70"><b>Placed</b></td><td style="width:30%; color:#4A5568">Undelivered; recover the parcel</td></tr>
+    <tr><td style="width:18%"><b>Placed</b></td><td style="width:34%">Collection event recorded</td><td style="width:18%; color:#0E7C70"><b>Collected</b></td><td style="width:30%; color:#4A5568">Pending; escalate if needed</td></tr>
+  </table>
+  <p style="position:absolute; left:128px; bottom:64px; width:1200px; font-size:24px; color:#6B7686">IntaGrit Technology · intagrit.com</p>
+  <p style="position:absolute; right:128px; bottom:64px; width:120px; text-align:right; font-size:24px; color:#6B7686">23</p>
+  <aside>From the LLD v5.0 transition table. The key line is Released to Active: a late acknowledgement can never restart a cancelled mission.</aside>
+</section>
